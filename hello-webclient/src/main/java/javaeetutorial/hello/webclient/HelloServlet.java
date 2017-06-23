@@ -39,11 +39,7 @@ public class HelloServlet extends HttpServlet {
 	// doGet and doPost methods, which call processRequest, and
 	// getServletInfo method
 	private String sayHello(java.lang.String arg0) throws MalformedURLException {
-		URL wsdlUrl = new URL("http://localhost:8080/helloservice-war-7.0.6/HelloService?WSDL");
-		QName qName = new QName("http://localhost:8080/helloservice-war-7.0.6/HelloService", "HelloService");
-		Service service = Service.create(wsdlUrl, qName);
-		HelloService helloService = service.getPort(HelloService.class);
-
+		HelloService helloService = new HelloService();
 		javaeetutorial.helloservice.endpoint.Hello port = helloService.getHelloPort();
 		return port.sayHello(arg0);
 	}
